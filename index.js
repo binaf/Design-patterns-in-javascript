@@ -38,23 +38,44 @@ var counterIncrementer = (() => {
 // Using a closure we will expose an object
 // as part of a public API that manages its
 // private parts
+// let fruitsCollection = (() => {
+//   // private
+//   let objects = [];
+
+//   //public
+//   return {
+//     addObject: (object) => {
+//       objects.push(object);
+//     },
+//     removeObject: (object) => {
+//       let index = objects.indexOf(object);
+//       if (index >= 0) {
+//         objects.splice(index);
+//       }
+//     },
+//     getObjects: () => JSON.parse(JSON.stringify(objects)),
+//   };
+// })();
+
+//  3 Revealing Module Pattern
+
 let fruitsCollection = (() => {
   // private
   let objects = [];
 
-  //public
-  return {
-    addObject: (object) => {
-      objects.push(object);
-    },
-    removeObject: (object) => {
-      let index = objects.indexOf(object);
-      if (index >= 0) {
-        objects.splice(index);
-      }
-    },
-    getObjects: () => JSON.parse(JSON.stringify(objects)),
+  const addObject = (object) => {
+    objects.push(object);
   };
+  const removeObject = (object) => {
+    let index = objects.indexOf(object);
+    if (index >= 0) {
+      objects.splice(index);
+    }
+  };
+  const getObjects = () => JSON.parse(JSON.stringify(objects));
+
+  //public
+  return { addObject, removeObject, getObjects };
 })();
 
 fruitsCollection.addObject('apple');
