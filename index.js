@@ -83,3 +83,35 @@ fruitsCollection.addObject('mange');
 fruitsCollection.addObject('pain');
 fruitsCollection.addObject('lait');
 console.log(fruitsCollection.getObjects());
+
+// 4 Singleton Pattern
+
+let configurationSingleton = (() => {
+  // private value of the singleton initialized only once
+  let config;
+
+  const initializeConfiguration = (values = { number: 5, size: 10 }) => {
+    this.randomNumber = Math.random();
+    values = values;
+    this.number = values.number;
+    this.size = values.size;
+
+    // we export the centralized method to return
+    // the singleton's value
+
+    return {
+      getConfig: (values) => {
+        //initialize the singleton only once
+        if (config) {
+          config = new initializeConfiguration(values);
+        }
+
+        // and always return the same value
+        return config;
+      },
+    };
+  };
+})();
+
+const configObject = configurationSingleton?.getConfig({ size: 8 });
+console.log(configObject);
