@@ -185,4 +185,29 @@ publisherSubscriber.unsubscribe('mouseClicked', subscriptionID3);
 publisherSubscriber.publish('mouseClicked', { data: 'data1' });
 publisherSubscriber.publish('mouseHoreved', { data: 'data2' });
 
+// +++++++++++++++++ 6 Mediator Pattern
 
+// //+++++++++++++++++++++ 7 Prototype Pattern
+
+// let personPrototype = {
+//   sayHi: () => {
+//     console.log('Hi, I am ' + this.name + ', and I have ' + this.age);
+//   },
+//   sayBye: () => {
+//     console.log('Bye!');
+//   },
+// };
+// const Person = (name = 'Ousmane HAIDARA', age = 23) => {
+//   const constructorFunction = (name, age) => {
+//     this.name = name;
+//     this.age = age;
+//   };
+
+//   constructorFunction.prototype = personPrototype;
+//   let instance = new constructorFunction(name, age);
+//   return instance;
+// };
+
+// const person1 = Person()
+
+//+++++++++++++++++++++ 8 Prototype Pattern
