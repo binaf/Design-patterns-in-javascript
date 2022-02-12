@@ -82,7 +82,7 @@ fruitsCollection.addObject('apple');
 fruitsCollection.addObject('mange');
 fruitsCollection.addObject('pain');
 fruitsCollection.addObject('lait');
-console.log(fruitsCollection.getObjects());
+// console.log(fruitsCollection.getObjects());
 
 // 4 Singleton Pattern
 
@@ -90,12 +90,12 @@ let configurationSingleton = (() => {
   // private value of the singleton initialized only once
   let config;
 
-  const initializeConfiguration = (values = { number: 5, size: 10 }) => {
-    this.randomNumber = Math.random();
-    values = values;
-    this.number = values.number;
-    this.size = values.size;
-  };
+  const initializeConfiguration = (values = { number: 5, size: 10 }) => ({
+    randomNumber: Math.random(),
+    values: values,
+    number: values.number,
+    size: values.size,
+  });
 
   // we export the centralized method to return
   // the singleton's value
@@ -103,8 +103,8 @@ let configurationSingleton = (() => {
   return {
     getConfig: (values) => {
       //initialize the singleton only once
-      if (config) {
-        config = new initializeConfiguration(values);
+      if (config === undefined) {
+        config = initializeConfiguration(values);
       }
 
       // and always return the same value
@@ -114,4 +114,9 @@ let configurationSingleton = (() => {
 })();
 
 const configObject = configurationSingleton.getConfig({ size: 8 });
-console.log(configObject);
+// console.log(configObject);
+
+const configObject1 = configurationSingleton.getConfig({ number: 8 });
+// console.log(configObject1);
+
+// 5 Observer Pattern
