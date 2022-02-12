@@ -95,23 +95,23 @@ let configurationSingleton = (() => {
     values = values;
     this.number = values.number;
     this.size = values.size;
+  };
 
-    // we export the centralized method to return
-    // the singleton's value
+  // we export the centralized method to return
+  // the singleton's value
 
-    return {
-      getConfig: (values) => {
-        //initialize the singleton only once
-        if (config) {
-          config = new initializeConfiguration(values);
-        }
+  return {
+    getConfig: (values) => {
+      //initialize the singleton only once
+      if (config) {
+        config = new initializeConfiguration(values);
+      }
 
-        // and always return the same value
-        return config;
-      },
-    };
+      // and always return the same value
+      return config;
+    },
   };
 })();
 
-const configObject = configurationSingleton?.getConfig({ size: 8 });
+const configObject = configurationSingleton.getConfig({ size: 8 });
 console.log(configObject);
