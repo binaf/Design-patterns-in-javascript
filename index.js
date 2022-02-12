@@ -5,7 +5,7 @@ import './style.css';
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>JS Starter</h1>`;
 
-// 1 Constructor Pattern
+// +++++++++++++++++++ 1 Constructor Pattern
 
 let instance01 = {};
 let instance02 = Object.create(Object.prototype);
@@ -15,7 +15,7 @@ let instance03 = new Object();
 // console.log('instance02', instance02);
 // console.log('instance03', instance03);
 
-// 2 Module Pattern
+// ++++++++++++++++++++++++ 2 Module Pattern
 
 //  +++++++++++++++++ closure
 
@@ -57,7 +57,7 @@ var counterIncrementer = (() => {
 //   };
 // })();
 
-//  3 Revealing Module Pattern
+//  +++++++++++++++ 3 Revealing Module Pattern
 
 let fruitsCollection = (() => {
   // private
@@ -84,7 +84,7 @@ fruitsCollection.addObject('pain');
 fruitsCollection.addObject('lait');
 // console.log(fruitsCollection.getObjects());
 
-// 4 Singleton Pattern
+// +++++++++++++++++ 4 Singleton Pattern
 
 let configurationSingleton = (() => {
   // private value of the singleton initialized only once
@@ -119,4 +119,59 @@ const configObject = configurationSingleton.getConfig({ size: 8 });
 const configObject1 = configurationSingleton.getConfig({ number: 8 });
 // console.log(configObject1);
 
-// 5 Observer Pattern
+// ++++++++++++++++++++++ 5 Observer Pattern
+// Here is a small example of the publisher/subscriber pattern.
+
+let publisherSubscriber = {};
+
+//we pass an object to the container to manage subscriptions
+((container) => {
+  // the id represents a subscription to the topic
+  let id = 0;
+
+  //the objects will subscribe to the topic by sending a callback to be executed when the event is fired
+  container.subscribe = (topic, f) => {
+    // console.log(topic)
+    if (!(topic in container)) {
+      container[topic] = [];
+    }
+
+    container[topic].push({ id: ++id, callback: f });
+    // console.log(container)
+    return id;
+  };
+
+  //Every subscription has it's own id , we will use it to remove the subscription
+  container.unsubscribe = (topic, id) => {
+    let subscribers = [];
+
+    for (subscriber of container[topic]) {
+      if (subscriber.id !== id) {
+        subscribers.push(subscriber);
+      }
+    }
+    container[topic] = subscribers;
+  };
+
+  container.publish = (topic, data) => {
+    for (var subscriber of container[topic]) {
+      // when we execute a callback it is always
+      // good to read the documentation to know which
+      // arguments are passed by the object firing
+      // the event
+      subscriber.callback(data);
+    }
+  };
+})(publisherSubscriber);
+
+let subscriptionID1 = publisherSubscriber.subscribe('mouseClicked', (data) => {
+  console.log('mouseClicked, data: ' + JSON.stringify(data));
+});
+
+let subscriptionID2 = publisherSubscriber.subscribe('mouseHoreved', (data) => {
+  console.log('mouseHoreved, data: ' + JSON.stringify(data));
+});
+
+let subscriptionID3 = publisherSubscriber.subscribe('mouseClicked', (data) => {
+  console.log('second mouseClicked, data: ' + JSON.stringify(data));
+});
