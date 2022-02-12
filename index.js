@@ -146,9 +146,10 @@ let publisherSubscriber = {};
     let subscribers = [];
 
     for (subscriber of container[topic]) {
+      console.log('subscriber', subscriber);
       if (subscriber.id !== id) {
         subscribers.push(subscriber);
-      } 
+      }
     }
     container[topic] = subscribers;
   };
