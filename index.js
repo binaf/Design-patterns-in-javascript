@@ -145,8 +145,7 @@ let publisherSubscriber = {};
   container.unsubscribe = (topic, id) => {
     let subscribers = [];
 
-    for (subscriber of container[topic]) {
-      console.log('subscriber', subscriber);
+    for (const subscriber of container[topic]) {
       if (subscriber.id !== id) {
         subscribers.push(subscriber);
       }
@@ -166,15 +165,15 @@ let publisherSubscriber = {};
 })(publisherSubscriber);
 
 let subscriptionID1 = publisherSubscriber.subscribe('mouseClicked', (data) => {
-  console.log('mouseClicked, data: ' + JSON.stringify(data));
+  // console.log('mouseClicked, data: ' + JSON.stringify(data));
 });
 
 let subscriptionID2 = publisherSubscriber.subscribe('mouseHoreved', (data) => {
-  console.log('mouseHoreved, data: ' + JSON.stringify(data));
+  // console.log('mouseHoreved, data: ' + JSON.stringify(data));
 });
 
 let subscriptionID3 = publisherSubscriber.subscribe('mouseClicked', (data) => {
-  console.log('second mouseClicked, data: ' + JSON.stringify(data));
+  // console.log('second mouseClicked, data: ' + JSON.stringify(data));
 });
 
 //when we publish an event , all callbacks should be called and you will see three logs
@@ -183,3 +182,7 @@ publisherSubscriber.publish('mouseHoreved', { data: 'data2' });
 
 //we unsubscribe an event
 publisherSubscriber.unsubscribe('mouseClicked', subscriptionID3);
+publisherSubscriber.publish('mouseClicked', { data: 'data1' });
+publisherSubscriber.publish('mouseHoreved', { data: 'data2' });
+
+
