@@ -210,4 +210,32 @@ publisherSubscriber.publish('mouseHoreved', { data: 'data2' });
 
 // const person1 = Person()
 
-//+++++++++++++++++++++ 8 Prototype Pattern
+//+++++++++++++++++++++ 8 Command Pattern
+
+// The object that knows how to execute the command
+const invoker = {
+  add: (x, y) => {
+    return x + y;
+  },
+  subtract: (x, y) => {
+    return x - y;
+  },
+};
+
+// the object to be used as abstraction layer when
+// we execute commands; it represents a interface
+// to the caller object
+let manager = {
+  execute: (name, args) => {
+    if (name in invoker) {
+      return invoker[name].apply(invoker, [].slice.call(arguments, 1));
+    }
+    return false;
+  },
+};
+// prints 8
+console.log(manager.execute('add', 3, 5));
+// prints 2
+console.log(manager.execute('subtract', 5, 3));
+
+// +++++++++++++++++++++++++ 9 Facade Pattern
