@@ -234,8 +234,23 @@ let manager = {
   },
 };
 // prints 8
-console.log(manager.execute('add', 3, 5));
+// console.log(manager.execute('add', 3, 5));
 // prints 2
-console.log(manager.execute('subtract', 5, 3));
+// console.log(manager.execute('subtract', 5, 3));
 
 // +++++++++++++++++++++++++ 9 Facade Pattern
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////  7 Killer One-Liners in JavaScript ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Shuffle Array
+const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
+// Testing
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// console.log(shuffleArray(arr));
+
+// Generate Random Color
+const generateRandomHexColor = () =>
+  `#${Math.floor(Math.random() * 0xffffff).toString(16)}`;
+// console.log('generateRandomHexColor', generateRandomHexColor());
