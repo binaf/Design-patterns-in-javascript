@@ -254,3 +254,16 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const generateRandomHexColor = () =>
   `#${Math.floor(Math.random() * 0xffffff).toString(16)}`;
 // console.log('generateRandomHexColor', generateRandomHexColor());
+
+function fizzBuzz(n) {
+  let fizzBuzz = [];
+  for (var i = 1; i <= n; i++) {
+    if (5 % i == 0 && 3 % i == 0) fizzBuzz.push('fizzbuzz');
+    else if (3 % i == 0) fizzBuzz.push('fizz');
+    else if (5 % i == 0) fizzBuzz.push('buzz');
+    else fizzBuzz.push('');
+  }
+  return fizzBuzz;
+}
+
+console.log('fizzBuzz', fizzBuzz(6));
