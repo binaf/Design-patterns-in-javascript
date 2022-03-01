@@ -266,4 +266,34 @@ function fizzBuzz(n) {
   return fizzBuzz;
 }
 
-console.log('fizzBuzz', fizzBuzz(6));
+// console.log('fizzBuzz', fizzBuzz(6));
+
+const testArray = [1, 2, 3];
+
+// let price = [];
+// [1, 2, 3].map((x) => {
+//   const y = x + 1;
+//   price.push(x * y);
+//   return x * y;
+// });
+
+// console.log('testArray', testArray);
+// console.log(
+//   'Price',
+//   [4, 6, 8].map((x) => {
+//     const y = x + 1;
+//     return x * y;
+//   })
+// )
+
+// console.log(
+//   'Price',
+//   [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
+//     console.log('++++++++++++++++++')
+//     console.log('acc', acc)
+//     console.log('item', item)
+//     console.log('index', index)
+//     const flatten = acc.concat(item);
+//     return flatten;
+//   })
+// )
