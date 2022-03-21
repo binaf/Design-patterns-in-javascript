@@ -297,3 +297,25 @@ const testArray = [1, 2, 3];
 //     return flatten;
 //   })
 // )
+
+function validateUsername(username) {
+  if (typeof username !== 'string' || username.length < 3) {
+    return `Usernames must be at least 3 characters long`;
+  }
+}
+
+function validatePassword(password) {
+  if (typeof password !== 'string' || password.length < 6) {
+    return `Passwords must be at least 6 characters long`;
+  }
+}
+const username = 'gfrsh';
+const password = 'fzrhzh';
+
+const fieldErrors = {
+  username: validateUsername(username),
+  password: validatePassword(password),
+};
+
+const values = Object.values(fieldErrors);
+// console.log(values.some(Boolean));
