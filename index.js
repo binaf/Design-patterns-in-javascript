@@ -319,3 +319,11 @@ const fieldErrors = {
 
 const values = Object.values(fieldErrors);
 // console.log(values.some(Boolean));
+
+// hash password
+import bcrypt from 'bcryptjs';
+function hash(password) {
+  return bcrypt.hash(password, 10);
+}
+
+console.log('hash =>', hash('twixrox'));
